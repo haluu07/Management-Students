@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Student</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Overall Background */
+        body {
+            background: linear-gradient(to right, #00bcd4, #8e44ad);
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Form Container */
+        .container {
+            max-width: 600px;
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+
+        /* Heading Style */
+        h2 {
+            color: #333;
+            font-weight: bold;
+        }
+
+        /* Input Fields */
+        .form-control {
+            border-radius: 25px;
+            border-color: #ddd;
+            padding: 15px;
+            font-size: 16px;
+        }
+
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        /* Button Style */
+        .btn {
+            border-radius: 25px;
+            padding: 12px 25px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            border-color: #5a6268;
+        }
+
+        /* Input File */
+        .form-control-file {
+            padding: 12px;
+            border-radius: 25px;
+            border-color: #ddd;
+        }
+
+        /* Space Between Inputs */
+        .mb-3 {
+            margin-bottom: 20px;
+        }
+
+        /* Cancel Button */
+        .btn-secondary {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container mt-5">
+        <h2 class="text-center">Add New Student</h2>
+
+        <!-- enctype để Flask nhận file upload -->
+        <form action="/add" method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label class="form-label">Name</label>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    name="name" 
+                    placeholder="Enter full name..." 
+                    required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Birthdate</label>
+                <input 
+                    type="date" 
+                    class="form-control" 
+                    name="birthdate" 
+                    required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Gender</label>
+                <select class="form-control" name="gender">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Major</label>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    name="department" 
+                    placeholder="E.g. Computer Science" 
+                    required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">GPA</label>
+                <input 
+                    type="number" 
+                    step="0.1" 
+                    class="form-control" 
+                    name="gpa" 
+                    placeholder="0.0 ~ 4.0" 
+                    required>
+            </div>
+
+            <!-- Input file cho ảnh -->
+            <div class="mb-3">
+                <label class="form-label">Student Image</label>
+                <input 
+                    type="file" 
+                    class="form-control-file" 
+                    name="image" 
+                    accept="image/*">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Add Student</button>
+            <a href="/students" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
